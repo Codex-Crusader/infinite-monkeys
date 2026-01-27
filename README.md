@@ -28,7 +28,7 @@ This simulator demonstrates the theorem by spawning multiple "monkey" processes 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/infinite-monkey-theorem.git
+git clone https://github.com/Codex-Crusader/infinite-monkey-theorem.git
 cd infinite-monkey-theorem
 
 # Run directly (no installation needed)
@@ -228,5 +228,6 @@ Created by Bhargavaram
 ---
 
 ⭐ If you find this project interesting, please give it a star!
+
 
 **Remember**: The infinite monkey theorem is a thought experiment about infinity - this simulation shows why even with modern computing, true randomness takes exponential time! 🐵🎲
