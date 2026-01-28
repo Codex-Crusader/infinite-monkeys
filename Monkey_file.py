@@ -42,6 +42,8 @@ def worker(worker_id, target, charset, stop_event, progress_counter):
     - No I/O in hot loop
     - Event checked periodically, not every iteration
     - Progress updated only when checking stop event (minimal overhead)
+    I don't know most hyper optimisation systems. 
+    So shoutout to my professors for pointing me in the right direction
     """
     # Local bindings for maximum speed
     rand = randrange
@@ -57,6 +59,7 @@ def worker(worker_id, target, charset, stop_event, progress_counter):
     while not stop_event.is_set():
         # Generate candidate string using list comprehension + join
         # This is faster than alternatives (+=, array, etc.)
+        # Too many Monkeys.
         candidate = ''.join([chars[rand(len_chars)] for _ in range(length)])
 
         attempts += 1
@@ -71,6 +74,7 @@ def worker(worker_id, target, charset, stop_event, progress_counter):
             return worker_id, attempts, candidate
 
         # Periodically check if another worker found it and update progress
+        # Monkeys need a supervisor
         if local_check_counter >= check_interval:
             # Update shared progress counter (minimal synchronization overhead)
             with progress_counter.get_lock():
@@ -110,8 +114,8 @@ def main():
     print(f"Workers: {MONKEY_COUNT}")
     print(f"CPU cores available: {os.cpu_count()}")
     print(f"{'=' * 70}")
-    print(f"\n⚠️  WARNING: This will use 100% CPU on {MONKEY_COUNT} processes!")
-    print(f"⚠️  Recommended setting: MONKEY_COUNT = {os.cpu_count()} (your CPU count)")
+    print(f"\n WARNING: This will use 100% CPU on {MONKEY_COUNT} processes!")
+    print(f" Recommended setting: MONKEY_COUNT = {os.cpu_count()} (your CPU count)")
     print(f"\nStarting workers... Press Ctrl+C to stop.\n")
 
     # Use 'spawn' for clean process isolation (required on macOS/Windows, best on Linux)
@@ -165,6 +169,7 @@ def main():
                 time.sleep(0.1)
 
         # Signal all workers to stop
+        # Monkey stop
         stop_event.set()
 
         # Wait for all processes to finish
@@ -185,7 +190,7 @@ def main():
 
         elapsed = perf_counter() - start_time
 
-        # Find winner and calculate stats
+        # Find winner monkey, give him the virtual bannana and calculate stats
         winner = None
         total_attempts = progress_counter.value
 
@@ -200,7 +205,7 @@ def main():
 
         if winner:
             w_id, w_attempts, w_match = winner
-            print(f"✓ MATCH FOUND!")
+            print(f"  MATCH FOUND!")
             print(f"  Worker #{w_id} found: '{w_match}'")
             print(f"  Worker attempts: {w_attempts:,}")
             print(f"  Total attempts (all workers): {total_attempts:,}")
@@ -215,15 +220,17 @@ def main():
         print(f"{'=' * 70}")
 
     except KeyboardInterrupt:
-        print(f"\n\n⚠️  Interrupted by user. Stopping workers...")
+        print(f"\n\n  Interrupted by user. Stopping workers...")
         stop_event.set()
         for p in processes:
             p.terminate()
             p.join()
-        print(f"✓ All workers stopped.")
+        print(f"  All workers stopped.")
 
 
 if __name__ == "__main__":
     # Ensure proper multiprocessing on Windows/macOS
+    # seriously, i would not know how to do this project without them.
     mp.freeze_support()
+
     main()
