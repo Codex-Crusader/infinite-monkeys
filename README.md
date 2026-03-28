@@ -1,4 +1,4 @@
-# 🐵 Infinite Monkey Theorem Simulator
+# Infinite Monkey Theorem Simulator
 
 A highly optimized, production-grade Python implementation of the [Infinite Monkey Theorem](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) using true multiprocessing parallelism.
 
@@ -7,22 +7,22 @@ A highly optimized, production-grade Python implementation of the [Infinite Monk
 This simulator demonstrates the theorem by spawning multiple "monkey" processes that generate random strings until one exactly matches a target string.
 
 
-## ✨ Features
+## Features
 
-- **🚀 Highly Optimized**: Near-optimal Python implementation with minimal overhead
-- **⚡ True Parallelism**: Bypasses Python's GIL using multiprocessing
-- **🖥️ Cross-Platform**: Works on Windows, macOS, and Linux
-- **📊 Real-Time Progress**: Live updates every 2 seconds showing attempt rate
-- **🎯 Configurable**: Easily adjust worker count, target string, and character set
-- **💾 Memory Efficient**: Minimal memory footprint with lock-free synchronization
-- **🛡️ Safe**: Graceful shutdown with Ctrl+C, proper cleanup
+- **Highly Optimized**: Near-optimal Python implementation with minimal overhead
+- **True Parallelism**: Bypasses Python's GIL using multiprocessing
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+- **Real-Time Progress**: Live updates every 2 seconds showing attempt rate
+- **Configurable**: Easily adjust worker count, target string, and character set
+- **Memory Efficient**: Minimal memory footprint with lock-free synchronization
+- **Safe**: Graceful shutdown with Ctrl+C, proper cleanup
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.7 or higher
 - No external dependencies (uses only standard library)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -53,13 +53,13 @@ Workers: 50
 CPU cores available: 16
 ======================================================================
 
-⚠️  WARNING: This will use 100% CPU on 50 processes!
-⚠️  Recommended setting: MONKEY_COUNT = 16 (your CPU count)
+WARNING: This will use 100% CPU on 50 processes!
+Recommended setting: MONKEY_COUNT = 16 (your CPU count)
 
 Starting workers... Press Ctrl+C to stop.
 
-⏱️  Progress: 5,420,000 attempts | 12.1s elapsed | 447,934 attempts/sec | 50 workers active
-⏱️  Progress: 12,830,000 attempts | 14.1s elapsed | 909,929 attempts/sec | 50 workers active
+Progress: 5,420,000 attempts | 12.1s elapsed | 447,934 attempts/sec | 50 workers active
+Progress: 12,830,000 attempts | 14.1s elapsed | 909,929 attempts/sec | 50 workers active
 
 ======================================================================
 RESULT
@@ -74,7 +74,7 @@ RESULT
 ======================================================================
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 Edit these constants in `monkey.py`:
 
@@ -94,9 +94,9 @@ EVENT_CHECK_INTERVAL = 10000      # Progress update frequency
 | 16+       | 16–32                    | Maximum throughput    |
 
 
-⚠️ **Warning**: Higher worker counts = more CPU usage and heat generation!
+**Warning**: Higher worker counts = more CPU usage and heat generation!
 
-## 🎯 Examples
+## Examples
 
 ### Example 1: Short Target (Quick Demo)
 
@@ -125,7 +125,7 @@ MONKEY_COUNT = 50
 
 Expected time: **Potentially never** (94¹² = 4.75×10²³ possibilities)
 
-## 🏗️ Architecture & Optimization
+## Architecture & Optimization
 
 ### Why This Implementation is Near-Optimal
 
@@ -148,7 +148,7 @@ Expected time: **Potentially never** (94¹² = 4.75×10²³ possibilities)
 
 *Actual performance varies based on system load, cooling, and specific CPU model*
 
-## 📊 Mathematical Background
+## Mathematical Background
 
 ### Probability Analysis
 
@@ -164,7 +164,7 @@ For target string of length `n` and character set of size `c`:
 - At 1M attempts/sec: **~15 billion years** expected
 - **This demonstrates why the theorem requires infinite time!**
 
-## 🛡️ Safety & Best Practices
+## Safety & Best Practices
 
 ### CPU Usage
 - Monitor CPU temperature during extended runs
@@ -181,7 +181,7 @@ For target string of length `n` and character set of size `c`:
 - 50 workers ≈ 50-100 MB total
 - Scales linearly with worker count
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Areas for improvement:
 
@@ -192,11 +192,11 @@ Contributions welcome! Areas for improvement:
 - [ ] Web interface for visualization
 - [ ] Statistics export (JSON/CSV)
 
-## 📝 License
+## License
 
 MIT License has been used for this project
 
-## 🎓 Educational Value
+## Educational Value
 
 This project demonstrates:
 
@@ -210,13 +210,13 @@ Perfect for:
 - Understanding computational complexity
 - Demonstrating why brute-force isn't always feasible
 
-## 🔗 References
+## References
 
 - [Infinite Monkey Theorem - Wikipedia](https://en.wikipedia.org/wiki/Infinite_monkey_theorem)
 - [Python Multiprocessing Documentation](https://docs.python.org/3/library/multiprocessing.html)
 - [Combinatorics and Probability](https://en.wikipedia.org/wiki/Combinatorics)
 
-## 📧 Contact
+## Contact
 
 Created by Bhargavaram
 
@@ -224,7 +224,7 @@ Created by Bhargavaram
 
 ---
 
-⭐ If you find this project interesting, please give it a star!
+If you find this project interesting, please give it a star!
 
 
 **Remember**: The infinite monkey theorem is a thought experiment about infinity - this simulation shows why even with modern computing, true randomness takes exponential time! 🐵🎲
